@@ -11,11 +11,15 @@ import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
-    private final Set<User> users = new HashSet<>();
+    private final List<User> users = new ArrayList<>();
+
+    {
+        users.add(new User("Ivan", "Vladimirovich", "Pushka", 35));
+    }
 
     @Override
     public List<User> getUsers() {
-        return new ArrayList<>(users);
+        return users;
     }
 
     @Override

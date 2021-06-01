@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class User {
-    private static long counter;
+    private static long counter = 0;
 
     private long id;
 
@@ -15,4 +15,12 @@ public class User {
     private String lastName;
 
     private int age;
+
+    public User(String firstName, String middleName, String lastName, int age) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.age = age;
+        this.id = ++counter;
+    }
 }
