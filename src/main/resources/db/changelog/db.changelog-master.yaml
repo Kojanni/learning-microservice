@@ -1,0 +1,86 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-lesson.yaml
+  - changeSet:
+      id: 1
+      author: Admin
+      comment: "Create table"
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: middle_name
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(250)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: INT
+
+  - changeSet:
+      id: 2
+      author: Admin
+      comment: "Create init user"
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: first_name
+                  value: "Ivan"
+              - column:
+                  name: middle_name
+                  value: "Vladimirovich"
+              - column:
+                  name: last_name
+                  value: "Pushka"
+              - column:
+                  name: age
+                  value: 35
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: first_name
+                  value: "Julia"
+              - column:
+                  name: middle_name
+                  value: "Egorovna"
+              - column:
+                  name: last_name
+                  value: "Belaiya"
+              - column:
+                  name: age
+                  value: 22
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: first_name
+                  value: "Svetlana"
+              - column:
+                  name: middle_name
+                  value: "Olegovna"
+              - column:
+                  name: last_name
+                  value: "Cho"
+              - column:
+                  name: age
+                  value: 37

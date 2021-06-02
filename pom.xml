@@ -14,6 +14,8 @@
 	<name>microservice</name>
 	<properties>
 		<java.version>11</java.version>
+		<postgresql.version>42.2.5</postgresql.version>
+		<liquibase.version>4.3.5</liquibase.version>
 	</properties>
 
 	<dependencies>
@@ -42,6 +44,24 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>${liquibase.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-maven-plugin</artifactId>
+			<version>${liquibase.version}</version>
 		</dependency>
 
 		<dependency>
