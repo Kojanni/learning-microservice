@@ -38,6 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User updateUser(User user) {
+        getUserById(user.getId());
         return Optional.of(userRepository.save(user)).orElseThrow(() -> new UserNotImplementedException(user));
     }
 
