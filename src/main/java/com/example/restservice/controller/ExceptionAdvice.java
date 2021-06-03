@@ -14,4 +14,8 @@ public class ExceptionAdvice {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(UserServiceImpl.UserNotImplementedException.class)
+    public ResponseEntity<Void> userNotCreatedException() {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
 }

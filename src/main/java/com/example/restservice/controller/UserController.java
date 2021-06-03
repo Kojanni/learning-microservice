@@ -26,15 +26,13 @@ public class UserController {
     }
 
     @PostMapping("")
-    public ResponseEntity<Void> postUser(@RequestBody User user) {
-        userService.createUser(user);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<User> postUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.createUser(user),HttpStatus.OK);
     }
 
     @PutMapping("")
-    public ResponseEntity<Void> putUser(@RequestBody User user) {
-        userService.updateUser(user);
-        return new ResponseEntity<>(HttpStatus.OK);
+    public ResponseEntity<User> putUser(@RequestBody User user) {
+        return new ResponseEntity<>( userService.updateUser(user), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -31,17 +32,24 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(User user) {
-        userRepository.save(user);
+    public User createUser(User user) {
+        return Optional.of(userRepository.save(user)).orElseThrow(() -> new UserNotImplementedException(user));
     }
 
     @Override
-    public void updateUser(User user) {
-        userRepository.save(user);
+    public User updateUser(User user) {
+        return Optional.of(userRepository.save(user)).orElseThrow(() -> new UserNotImplementedException(user));
     }
+
     @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "User not found in DB")
-    public class UserNotFoundException extends RuntimeException {
+    public static class UserNotFoundException extends RuntimeException {
         public UserNotFoundException(int id) {
+        }
+    }
+
+    @ResponseStatus(code = HttpStatus.NOT_IMPLEMENTED)
+    public static class UserNotImplementedException extends RuntimeException {
+        public UserNotImplementedException(User user) {
         }
     }
 }
