@@ -1,0 +1,12 @@
+spring:
+    kafka:
+        bootstrap-servers: broker:9092
+    cloud:
+         stream:
+             binders:
+                 binderName:
+                    type: kafka
+             bindings:
+                 broadcast:
+                    destination: demo-pub-sub
+
